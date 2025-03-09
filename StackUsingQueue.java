@@ -6,7 +6,7 @@ public class StackUsingQueue {
     Queue<Integer> q1 = new LinkedList<>();
     Queue<Integer> q2 = new LinkedList<>();
 
-    public void enqueue(int value) {
+    public void push(int value) {
 
         while (!q1.isEmpty()) {
             q2.add(q1.remove());
@@ -20,7 +20,7 @@ public class StackUsingQueue {
 
     }
 
-    public int dequeue() {
+    public int pop() {
         return q1.remove();
 
     }
@@ -28,9 +28,9 @@ public class StackUsingQueue {
     public static void main(String[] args) {
 
         StackUsingQueue stack = new StackUsingQueue();
-        stack.enqueue(20);
-        stack.enqueue(40);
+        stack.push(20);
+        stack.push(40);
 
-        System.out.println(stack.dequeue());
+        System.out.println(stack.pop());
     }
 }
