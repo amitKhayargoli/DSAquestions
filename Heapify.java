@@ -1,5 +1,5 @@
-class HeapifyExample {
-    // Function to heapify a subtree rooted at index i in an array of size n
+
+class Heapify {
     static void maxHeapify(int arr[], int n, int root) {
         int largest = root; // Assume root is the largest
         int left = 2 * root + 1; // Left child index
@@ -37,9 +37,12 @@ class HeapifyExample {
         System.out.println("Original array:");
         printArray(arr);
 
-        maxHeapify(arr, n, 0);
+        // Heapify all non-leaf nodes to build the Max Heap
+        for (int i = n / 2 - 1; i >= 0; i--) {
+            maxHeapify(arr, n, i);
+        }
 
-        System.out.println("Heapified array:");
+        System.out.println("Max Heapified array:");
         printArray(arr);
     }
 }

@@ -4,15 +4,20 @@ public class MaxSubArraySum {
         int currentSum = arr[0]; // Keep track of the current subarray sum
 
         for (int i = 1; i < arr.length; i++) {
-            currentSum = Math.max(arr[i], currentSum + arr[i]); // Choose to add or start a new subarray
-            maxSum = Math.max(maxSum, currentSum); // Update the overall maximum sum
+
+            currentSum = Math.max(arr[i], currentSum + arr[i]);
+
+            maxSum = Math.max(maxSum, currentSum);
+
         }
 
         return maxSum; // Return the maximum sum found
     }
 
     public static void main(String[] args) {
-        int[] arr = { 5, 4, -1, 7, 8 };
+        int[] arr = { 4, -1, 2, 1 };
         System.out.println("Maximum Subarray Sum: " + findMaxSum(arr));
     }
 }
+
+// O(n)

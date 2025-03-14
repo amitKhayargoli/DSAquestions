@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+// O(n)
+
 class KEvenMixedSorter {
 
     public static void sortKEvenMixed(int[] A) {
