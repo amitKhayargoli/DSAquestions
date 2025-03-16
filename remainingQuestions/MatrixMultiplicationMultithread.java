@@ -2,22 +2,25 @@ package remainingQuestions;
 
 public class MatrixMultiplicationMultithread {
     public static int[][] multiplyMatrices(int[][] A, int[][] B) {
+
         int m = A.length;
         int n = A[0].length;
         int p = B[0].length;
 
         if (n != B.length) {
-            throw new IllegalArgumentException("Number of columns in A must match number of rows in B");
+            throw new IllegalArgumentException("Column count of A doesnt match with B rows");
         }
 
-        int[][] C = new int[m][p];
         Thread[] threads = new Thread[m];
+        int[][] C = new int[m][p];
 
         for (int i = 0; i < m; i++) {
             final int row = i;
+
             threads[i] = new Thread(() -> {
                 for (int j = 0; j < p; j++) {
                     for (int k = 0; k < n; k++) {
+
                         C[row][j] += A[row][k] * B[k][j];
                     }
                 }
@@ -25,12 +28,13 @@ public class MatrixMultiplicationMultithread {
             threads[i].start();
         }
 
-        for (int i = 0; i < m; i++) {
-            try {
+        try {
+            for (int i = 0; i < m; i++) {
                 threads[i].join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return C;
